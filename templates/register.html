@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Harvest Initiative</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+       
+        body {
+            background-color: #7398bd; 
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        
+        .section-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: #353c42;
+        }
+
+        
+        .form-container {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            margin: 0 15px;
+        }
+
+        .form-container h3 {
+            margin-bottom: 20px;
+            color: #495057;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 12px;
+        }
+
+        
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+        }
+
+        
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 20px;
+            }
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 30px 0;
+        }
+
+        footer a {
+            color: #fff;
+        }
+
+        footer a:hover {
+            text-decoration: none;
+        }
+
+        footer .social-links {
+            margin: 20px 0;
+        }
+
+        footer .social-links a {
+            margin: 0 10px;
+        }
+
+        footer .social-links a.btn {
+            padding: 10pxA 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+        <a class="navbar-brand" href="/">Community Harvest Initiative</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            
+        </div>
+    </nav>
+
+    
+    <div class="section-form" id="registerForm">
+        <div class="form-container">
+            <h3 class="text-primary">Join to stay updated</h3><br>
+            <form id="registrationForm" action="/register" method="post">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Username" required minlength="3" aria-label="Enter your username (3+ characters)">
+                </div>
+                <div class="form-group">
+                    <label for="first_name">First Name</label>
+                    <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First Name" required aria-label="Enter your first name">
+                </div>
+                <div class="form-group">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last Name" required aria-label="Enter your last name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Email" required aria-label="Enter your email address">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Password" required minlength="6" aria-label="Enter your password (at least 6 characters)">
+                </div>
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required minlength="6" aria-label="Confirm your password">
+                </div>
+                <div class="form-group">
+                    <label for="phone_number">Phone Number</label>
+                    <input type="tel" class="form-control" name="phone_number" id="phone_number" placeholder="Phone Number" required aria-label="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea class="form-control" name="address" id="address" placeholder="Address" required aria-label="Enter your address"></textarea>
+                </div>
+
+                <!-- The role is set as "user" by default in backend -->
+                <input type="hidden" name="role" value="user">
+
+                <button type="submit" class="btn btn-primary">Register</button>
+                <a href="/login" class="ms-4">Already ave an Account? Login</a>
+            </form>
+        </div>
+    </div>
+
+    
+    <footer class="text-center mt-4 py-4" style="background-color: #343a40; color: #fff;">
+        <div class="container">
+           
+            <p>&copy; 2024 Community Harvest Initiative</p>
+
+            
+            <div class="d-flex justify-content-center">
+                <a href="https://www.facebook.com/CommunityHarvest" target="_blank" class="btn btn-outline-primary btn-sm mx-2">Facebook</a>
+                <a href="https://www.instagram.com/CommunityHarvest" target="_blank" class="btn btn-outline-danger btn-sm mx-2">Instagram</a>
+                <a href="mailto:info@communityharvest.org" class="btn btn-outline-info btn-sm mx-2">Contact Us</a>
+            </div>
+        </div>
+
+        
+        <div class="container mt-4">
+            <div class="row quick-links">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/about" class="text-white">About Us</a></li>
+                        <li><a href="#registration" class="text-white">Register</a></li>
+                        <li><a href="#events" class="text-white">Upcoming Events</a></li>
+                        <li><a href="#recipes" class="text-white">Share Recipes</a></li>
+                        <li><a href="#volunteers" class="text-white">Volunteer</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Support Us</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/donate" class="text-white">Donate</a></li>
+                        <li><a href="/contact" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5><a href="/training" class="text-white">Training</a></h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/information" class="text-white">Learn More</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

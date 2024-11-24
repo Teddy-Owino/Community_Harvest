@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Community Harvest Initiative</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: #17a2b8;
+        }
+
+        .navbar-brand {
+            color: white !important;
+        }
+
+        .container {
+            max-width: 800px;
+            margin-top: 50px;
+        }
+
+        h2 {
+            color: #17a2b8;
+        }
+
+        .form-control {
+            border-radius: 0.25rem;
+        }
+
+        .alert {
+            margin-top: 20px;
+        }
+
+        /* Styling for the content of the page */
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 30px 0;
+        }
+
+        footer a {
+            color: #fff;
+        }
+
+        footer a:hover {
+            text-decoration: none;
+        }
+
+        footer .social-links {
+            margin: 20px 0;
+        }
+
+        footer .social-links a {
+            margin: 0 10px;
+        }
+
+        footer .social-links a.btn {
+            padding: 10pxA 20px;
+            font-size: 14px;
+        }
+        
+        .btn-primary {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+        }
+
+        .btn-primary:hover {
+            background-color: #138496;
+            border-color: #117a8b;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Community Harvest Initiative</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Events</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Volunteer</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-5">
+    <h2>Contact Us - Community Harvest Initiative</h2>
+    <p>Have a question or want to get involved? Send us a message below!</p>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="alert alert-success" role="alert">
+                {{ messages[0][0] }}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+        <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="subject" class="form-label">Subject</label>
+            <input type="text" class="form-control" id="subject" name="subject" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Send Message</button>
+    </form>
+</div>
+
+ <!-- Footer -->
+ <footer class="text-center mt-4 py-4" style="background-color: #343a40; color: #fff;">
+    <div class="container">
+        <!-- Copyright Section -->
+        <p>&copy; 2024 Community Harvest Initiative</p>
+
+        <!-- Social Media and Contact Links -->
+        <div class="d-flex justify-content-center">
+            <a href="https://www.facebook.com/CommunityHarvest" target="_blank" class="btn btn-outline-primary btn-sm mx-2">Facebook</a>
+            <a href="https://www.instagram.com/CommunityHarvest" target="_blank" class="btn btn-outline-danger btn-sm mx-2">Instagram</a>
+            <a href="mailto:info@communityharvest.org" class="btn btn-outline-info btn-sm mx-2">Contact Us</a>
+        </div>
+    </div>
+
+    <!-- Quick Links Section -->
+    <div class="container mt-4">
+        <div class="row quick-links">
+            <div class="col-md-4">
+                <h5>About Us</h5>
+                <ul class="list-unstyled">
+                    <li><a href="/about" class="text-white">About Us</a></li>
+                    <li><a href="#registration" class="text-white">Register</a></li>
+                    <li><a href="#events" class="text-white">Upcoming Events</a></li>
+                    <li><a href="#recipes" class="text-white">Share Recipes</a></li>
+                    <li><a href="#volunteers" class="text-white">Volunteer</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Support Us</h5>
+                <ul class="list-unstyled">
+                    <li><a href="/donate" class="text-white">Donate</a></li>
+                    <li><a href="/contact" class="text-white">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5><a href="/training" class="text-white">Training</a></h5>
+                <ul class="list-unstyled">
+                    <li><a href="/information" class="text-white">Learn More</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

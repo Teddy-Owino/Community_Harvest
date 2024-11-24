@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Harvest Initiative - Food Distribution</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #495057;
+            font-family: Arial, sans-serif;
+        }
+
+        
+        nav {
+            margin-bottom: 20px;
+        }
+
+        
+        h1, h2 {
+            color: #343a40;
+        }
+
+        
+        .section-title {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Food items container */
+        .food-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 0 15px;
+        }
+
+        
+        .food-card {
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            text-align: center;
+        }
+
+        .food-card img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .food-card h5 {
+            margin-top: 10px;
+            color: #343a40;
+        }
+
+        
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            padding: 10px 20px;
+            text-align: center;
+        }
+       
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 30px 0;
+        }
+
+        footer a {
+            color: #fff;
+        }
+
+        footer a:hover {
+            text-decoration: none;
+        }
+
+        footer .social-links {
+            margin: 20px 0;
+        }
+
+        footer .social-links a {
+            margin: 0 10px;
+        }
+
+        footer .social-links a.btn {
+            padding: 10pxA 20px;
+            font-size: 14px;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #343a40;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Community Harvest Initiative</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('food') }}">Food Distribution</a>
+                </li>
+                
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="container my-5">
+        <h1 class="section-title">Food Distribution to the Needy</h1>
+        <p class="text-center">We distribute food to those in need, including school pupils, families, and community members. Below are some of the essential food items we provide.</p>
+
+        <!-- Types of Food Section -->
+        <div class="food-container">
+            <div class="food-card">
+                <img src="../static/images/blueband.jpeg" alt="Blueband">
+                <h5>Blueband</h5>
+                <p>Popular margarine used in households and schools to enrich meals.</p>
+            </div>
+            <div class="food-card">
+                <img src="../static/images/rice.jpg" alt="Rice">
+                <h5>Rice</h5>
+                <p>A staple food item, providing essential nutrition to families in need.</p>
+            </div>
+            <div class="food-card">
+                <img src="../static/images/beans.png" alt="Beans">
+                <h5>Beans</h5>
+                <p>Rich in protein, we provide beans to ensure balanced nutrition.</p>
+            </div>
+            <div class="food-card">
+                <img src="../static/images/sugar.jpg" alt="Sugar">
+                <h5>Sugar</h5>
+                <p>Sweetener for families and schools to complement meals.</p>
+            </div>
+            <div class="food-card">
+                <img src="../static/images/flour.jpg" alt="Maize Flour">
+                <h5>Maize Flour</h5>
+                <p>Used to make porridge and staple food for families.</p>
+            </div>
+            <div class="food-card">
+                <img src="../static/images/oil.jpg" alt="Cooking Oil">
+                <h5>Cooking Oil</h5>
+                <p>Essential for cooking, providing fats for energy and growth.</p>
+            </div>
+            
+        </div>
+
+        
+        <div class="text-center mt-4">
+            <a href="#" class="btn-custom">Learn More or Donate</a>
+        </div>
+    </div>
+
+   
+    <!-- Footer -->
+    <footer class="text-center mt-4 py-4" style="background-color: #343a40; color: #fff;">
+        <div class="container">
+            
+            <p>&copy; 2024 Community Harvest Initiative</p>
+
+            <!-- Links -->
+            <div class="d-flex justify-content-center">
+                <a href="https://www.facebook.com/CommunityHarvest" target="_blank" class="btn btn-outline-primary btn-sm mx-2">Facebook</a>
+                <a href="https://www.instagram.com/CommunityHarvest" target="_blank" class="btn btn-outline-danger btn-sm mx-2">Instagram</a>
+                <a href="mailto:info@communityharvest.org" class="btn btn-outline-info btn-sm mx-2">Contact Us</a>
+            </div>
+        </div>
+
+        
+        <div class="container mt-4">
+            <div class="row quick-links">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ url_for('about') }}" class="text-white">About Us</a></li>
+                        <li><a href="#registration" class="text-white">Register</a></li>
+                        <li><a href="#events" class="text-white">Upcoming Events</a></li>
+                        <li><a href="#recipes" class="text-white">Share Recipes</a></li>
+                        <li><a href="#volunteers" class="text-white">Volunteer</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Support Us</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ url_for('donate') }}" class="text-white">Donate</a></li>
+                        <li><a href="{{ url_for('contact') }}" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5><a href="{{ url_for('contact') }}" class="text-white">Contact Us</a></li></h5>
+                    <p>Email: <a href="mailto:info@communityharvest.org" class="text-white">info@communityharvest.org</a></p>
+                    <p>Phone: +1 (800) 123-4567</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

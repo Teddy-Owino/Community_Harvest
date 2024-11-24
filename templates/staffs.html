@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Members</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <style>
+        
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));  /* Responsive grid */
+            gap: 20px;
+            padding: 20px;
+        }
+
+        
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            background-color: #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);  
+        }
+
+        
+        .card-header {
+            width: 100%;
+            height: 200px;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        
+        .card-body {
+            padding: 15px;
+            text-align: center;
+        }
+
+        
+        .member-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        
+        .member-position {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .member-email {
+            font-size: 14px;
+            color: #888;
+            margin-top: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Staff Members</h1>
+        <div class="card-container">
+            {% for member in members %}
+            <div class="card">
+                <div class="card-header">
+                    
+                    {% if member[3] %}
+                        <img src="{{ url_for('static', filename='images/' + member[3]) }}" alt="Profile Picture" class="profile-img">
+                    {% else %}
+                        <img src="{{ url_for('static', filename='images/default-profile.png') }}" alt="Profile Picture" class="profile-img">
+                    {% endif %}
+                </div>
+                <div class="card-body">
+                    <h3 class="member-name">{{ member[1] }}</h3>
+                    <p class="member-position">{{ member[2] }}</p>
+                    <p class="member-email">{{ member[4] }}</p>
+                </div>
+            </div>
+            {% else %}
+            <p>No staff members found.</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

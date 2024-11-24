@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Harvest Initiative - Training Programs</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #495057;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #007bff;
+        }
+
+        .text-primary {
+            color: #007bff !important;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+        }
+
+        
+        .training-section {
+            padding: 50px 0;
+        }
+
+        .training-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .training-card .card-body {
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+        }
+
+        .training-card h5 {
+            font-size: 1.25rem;
+            color: #343a40;
+            font-weight: 600;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 30px 0;
+        }
+
+        footer a {
+            color: #fff;
+        }
+
+        footer a:hover {
+            text-decoration: none;
+        }
+
+        footer .social-links {
+            margin: 20px 0;
+        }
+
+        footer .social-links a {
+            margin: 0 10px;
+        }
+
+        footer .social-links a.btn {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+        
+        footer .quick-links {
+            margin-top: 30px;
+        }
+
+        footer .quick-links .col-md-4 h5 {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        footer .quick-links .col-md-4 ul {
+            padding-left: 0;
+        }
+
+        footer .quick-links .col-md-4 ul li {
+            margin-bottom: 10px;
+        }
+
+        .training-card p {
+            color: #6c757d;
+            font-size: 1rem;
+        }
+
+        .training-header {
+            background-image: url('/static/images/food-training.jpg'); /* Replace with the actual image file path */
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 5px rgb(244, 236, 4);
+        }
+
+        .training-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        
+        @media (max-width: 768px) {
+            .training-header h1 {
+                font-size: 2rem;
+            }
+
+            .training-card {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Community Harvest Initiative</a>
+    </nav>
+
+    <!-- Training Header Section with Image -->
+    <section class="training-header">
+        <h1>Empowering Communities through Training</h1>
+    </section>
+
+    
+    <section class="training-section container">
+        <h2 class="section-title text-center">Our Training Programs</h2>
+        <p class="text-center">At Community Harvest Initiative, we offer a range of training programs designed to empower individuals and communities. These programs help participants gain valuable skills that improve their livelihoods and contribute to community growth.</p>
+
+        <div class="row">
+            
+            <div class="col-md-4 mb-4">
+                <div class="training-card">
+                    <div class="card-body">
+                        <h5>Agriculture and Farming Skills</h5>
+                        <p>Our agriculture training equips individuals with essential farming techniques such as organic farming, soil conservation, crop rotation, and sustainable practices. We aim to help people grow their own food and increase self-sufficiency.</p>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="col-md-4 mb-4">
+                <div class="training-card">
+                    <div class="card-body">
+                        <h5>Cooking and Nutrition Education</h5>
+                        <p>This program teaches how to prepare nutritious, cost-effective meals using local ingredients. We focus on educating participants on healthy cooking methods and the importance of a balanced diet for better health.</p>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="col-md-4 mb-4">
+                <div class="training-card">
+                    <div class="card-body">
+                        <h5>Entrepreneurship and Business Skills</h5>
+                        <p>Our entrepreneurship training focuses on providing practical skills in business management, financial literacy, and marketing. We help individuals start their own businesses and become financially independent.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <p class="text-center">Our training programs are designed to empower individuals with skills that will help them thrive in today's world. By investing in people, we build stronger and more sustainable communities.</p>
+           <p class="text-warning">Reach us to know more about our Training Program</p> <a href="{{ url_for('contact') }}" class="btn btn-primary">Contact Us</a>
+        </div>
+    </section>
+
+    
+    <footer class="text-center mt-4 py-4" style="background-color: #343a40; color: #fff;">
+        <div class="container">
+            
+            <p>&copy; 2024 Community Harvest Initiative</p>
+
+            
+            <div class="d-flex justify-content-center">
+                <a href="https://www.facebook.com/CommunityHarvest" target="_blank" class="btn btn-outline-primary btn-sm mx-2">Facebook</a>
+                <a href="https://www.instagram.com/CommunityHarvest" target="_blank" class="btn btn-outline-danger btn-sm mx-2">Instagram</a>
+                <a href="mailto:info@communityharvest.org" class="btn btn-outline-info btn-sm mx-2">Contact Us</a>
+            </div>
+        </div>
+
+        
+        <div class="container mt-4">
+            <div class="row quick-links">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ url_for('about') }}" class="text-white">About Us</a></li>
+                        <li><a href="#registration" class="text-white">Register</a></li>
+                        <li><a href="#events" class="text-white">Upcoming Events</a></li>
+                        <li><a href="#recipes" class="text-white">Share Recipes</a></li>
+                        <li><a href="#volunteers" class="text-white">Volunteer</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Support Us</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ url_for('donate') }}" class="text-white">Donate</a></li>
+                        <li><a href="{{ url_for('contact') }}" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5><a href="{{ url_for('contact') }}" class="text-white">Contact Us</a></li></h5>
+                    <p>Email: <a href="mailto:info@communityharvest.org" class="text-white">info@communityharvest.org</a></p>
+                    <p>Phone: +1 (800) 123-4567</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

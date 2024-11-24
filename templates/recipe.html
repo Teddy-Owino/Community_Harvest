@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Harvest Initiative - Add Recipe</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        /* Dark background for the whole page */
+        body {
+            background-color: #343a40; /* Dark background */
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Centering the recipe form */
+        .section-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: #343a40;
+        }
+
+        /* Styling for the form container */
+        .form-container {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            margin: 0 15px;
+        }
+
+        .form-container h3 {
+            margin-bottom: 20px;
+            color: #495057;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 12px;
+        }
+
+        /* Input focus styling */
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Community Harvest Initiative</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Add navigation items if necessary -->
+        </div>
+    </nav>
+
+    <!-- Add New Recipe Form Section -->
+    <div class="section-form" id="addRecipeForm">
+        <div class="form-container">
+            <h3 class="text-primary">Add New Recipe</h3><br>
+            <form method="POST">
+                <div class="form-group">
+                    <label for="title">Recipe Title</label>
+                    <input type="text" class="form-control" id="title" name="title" required placeholder="Enter the recipe title" aria-label="Enter the recipe title">
+                </div>
+        
+                <div class="form-group">
+                    <label for="ingredients">Ingredients</label>
+                    <textarea class="form-control" id="ingredients" name="ingredients" rows="4" required placeholder="Enter ingredients" aria-label="Enter the ingredients"></textarea>
+                </div>
+        
+                <div class="form-group">
+                    <label for="instructions">Instructions</label>
+                    <textarea class="form-control" id="instructions" name="instructions" rows="6" required placeholder="Enter instructions" aria-label="Enter the instructions"></textarea>
+                </div>
+        
+                <div class="form-group">
+                    <label for="prep_time">Preparation Time</label>
+                    <input type="text" class="form-control" id="prep_time" name="prep_time" required placeholder="Enter prep time" aria-label="Enter prep time">
+                </div>
+        
+                <div class="form-group">
+                    <label for="cook_time">Cook Time</label>
+                    <input type="text" class="form-control" id="cook_time" name="cook_time" required placeholder="Enter cook time" aria-label="Enter cook time">
+                </div>
+        
+                <div class="form-group">
+                    <label for="serving_size">Serving Size</label>
+                    <input type="text" class="form-control" id="serving_size" name="serving_size" required placeholder="Enter serving size" aria-label="Enter serving size">
+                </div>
+        
+                <div class="form-group">
+                    <label for="difficulty_level">Difficulty Level</label>
+                    <select class="form-control" id="difficulty_level" name="difficulty_level" required aria-label="Select difficulty level">
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+        
+                <div class="form-group">
+                    <label for="cuisine_type">Cuisine Type</label>
+                    <input type="text" class="form-control" id="cuisine_type" name="cuisine_type" required placeholder="Enter cuisine type" aria-label="Enter cuisine type">
+                </div>
+        
+                <button type="submit" class="btn btn-primary">Add Recipe</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Message</title>
+</head>
+<body>
+    <h2>Message from {{ message['name'] }}</h2>
+    <p><strong>Email:</strong> {{ message['email'] }}</p>
+    <p><strong>Subject:</strong> {{ message['subject'] }}</p>
+    <p><strong>Message:</strong> {{ message['message'] }}</p>
+    <p><strong>Status:</strong> {% if message['is_read'] %} Read {% else %} Unread {% endif %}</p>
+
+    <a href="{{ url_for('contact') }}">Back to Contact Form</a>
+</body>
+</html>

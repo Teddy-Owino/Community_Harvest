@@ -1,0 +1,162 @@
+.section-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+.section-text {
+    flex: 1;
+    margin: 20px;
+}
+.section-text h2 {
+    margin-bottom: 10px;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+.section-text p {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+}
+.section-image {
+    flex: 1;
+    text-align: center;
+    margin: 20px;
+}
+.section-image img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.section-form {
+    display: none;
+    margin-top: 20px;
+}
+.section-form form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.section-button {
+    background-color: #27ae60;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.section-button:hover {
+    background-color: #2ecc71;
+}
+.btn-primary, .btn-success, .btn-warning, .btn-info {
+    font-weight: bold;
+}
+/* Add the alternating class here */
+.alt-left .section-image {
+    order: 1; /* Image comes first (on the left) */
+}
+.alt-left .section-text {
+    order: 2; /* Text comes second (on the right) */
+}
+.alt-right .section-image {
+    order: 2; /* Image comes second (on the right) */
+}
+.alt-right .section-text {
+    order: 1; /* Text comes first (on the left) */
+}
+
+/* Styling for the 'See More' button */
+button.btn-info {
+background-color: #17a2b8;
+border-color: #17a2b8;
+}
+
+button.btn-info:hover {
+background-color: #138496;
+border-color: #117a8b;
+}
+
+/* Styling for expanded content */
+#volunteerDetails {
+margin-top: 20px;
+background-color: #f8f9fa;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+/* Styling for the 'Support These Projects' section */
+.section-container#support-projects {
+margin-top: 50px; /* Space between sections */
+padding: 40px 0;
+background-color: #f4f4f4; /* Light gray background for distinction */
+border-radius: 8px;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.section-container#support-projects .section-text {
+flex: 1;
+margin: 20px;
+}
+
+.section-container#support-projects h2 {
+font-size: 2rem;
+font-weight: 600;
+color: #27ae60; /* Green color for a positive, call-to-action look */
+}
+
+.section-container#support-projects p {
+font-size: 1.2rem;
+color: #7f8c8d;
+margin-bottom: 20px;
+}
+
+.section-container#support-projects .section-image {
+flex: 1;
+text-align: center;
+margin: 20px;
+}
+
+.section-container#support-projects .section-image img {
+max-width: 250px;
+border-radius: 8px;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the 'Support Now' Button */
+.section-container#support-projects .btn-success {
+background-color: #2ecc71; /* Green color */
+color: white;
+padding: 12px 24px;
+font-size: 1.1rem;
+font-weight: bold;
+border-radius: 5px;
+border: none;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+.section-container#support-projects .btn-success:hover {
+background-color: #27ae60; /* Darker green for hover effect */
+}
+
+/* For smaller screen sizes (mobile responsiveness) */
+@media (max-width: 768px) {
+.section-container#support-projects {
+    padding: 20px;
+}
+
+.section-container#support-projects .section-text,
+.section-container#support-projects .section-image {
+    text-align: center;
+    flex: 1 100%;
+}
+
+.section-container#support-projects .section-image img {
+    max-width: 100%;
+}
+}

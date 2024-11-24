@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Harvest Initiative</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/stylo.css">
+
+    <style>
+        /* Sidebar Styling */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 999; /* Sidebar under navbar */
+        }
+
+        .sidebar a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+            color: #818181;
+        }
+
+        /* Open Sidebar Button Styling */
+        .openbtn {
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #111;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-left: 10px;
+            position: relative;
+            z-index: 1001; /* Ensure button is clickable and on top of sidebar */
+        }
+
+        .openbtn:hover {
+            background-color: #444;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            z-index: 1002; /* Ensure navbar stays on top of sidebar */
+            transition: transform 0.5s ease-in-out; /* Transition effect for shifting navbar */
+        }
+
+        /* Shift navbar when sidebar opens */
+        .navbar.shifted {
+            transform: translateX(250px); /* Shift navbar to the right when sidebar is open */
+        }
+
+        /* Community Container */
+        .community-container {
+            background-image: url('static/images/pumpkins.jpg');
+            background-size: cover;
+            background-position: center center;
+            height: 400px;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s ease-out;
+        }
+
+        .content-below {
+            margin-top: 30px;
+            color: #333;
+        }
+
+        .community-container h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .community-container p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            line-height: 1.5;
+        }
+
+        /* Hide Image on Scroll */
+        .community-container.hide-image {
+            transform: translateY(-100px); /* Hide image on scroll up */
+        }
+
+        /* For Mobile Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%; /* Sidebar takes full width on mobile */
+                padding-top: 80px; /* Add padding for better spacing */
+            }
+
+            .navbar-collapse {
+                text-align: center;
+            }
+
+            .openbtn {
+                margin-left: 0px; /* Adjust button position on smaller screens */
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a class="nav-link text-white" href="/login">Login</a>
+        <a href="/information" class="nav-link text-white">More info</a>
+        <a href="/contact" class="nav-link text-white">Contacts</a>
+        <a href="/about" class="nav-link text-white">About</a>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <!-- Navbar Brand Text Only -->
+            <a class="navbar-brand" href="/">Community Harvest Initiative</a>
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span> 
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav text-white">
+                    <li class="nav-item"><a class="nav-link" href="#registration"></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#events"></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#recipes"></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#volunteers"></a></li>
+                </ul>
+    
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <button class="openbtn" onclick="openNav()">☰ </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Community Harvest Section with Image -->
+    <div class="container community-container" id="communityImageSection">
+        <div>
+            <h1 class="mt-4 text-center">Community Harvest Initiative</h1>
+            <p class="lead">Empowering Communities Through Collaboration, Sustainability, and Compassion</p><br><br>
+            <a href="/about" class="btn btn-outline-warning btn-lg">FIND OUT MORE</a>
+        </div>
+    </div>
+    <!-- Introduction Section for Community Harvest Initiative -->
+    <div class="container mt-5 content-below">
+        <div class="row">
+            <div class="col-12">
+                <p class="lead text-center mt-3">Empowering Communities Through Collaboration, Sustainability, and Compassion</p>
+                <div class="text-center mt-4">
+                    <p class="lead">
+                        The <strong>Community Harvest Initiative</strong> is a community-driven program dedicated to fostering connection, sustainability, and social responsibility by bringing people together to meet the needs of those who are most vulnerable. Our mission is to provide a platform where neighbors can help one another, whether by sharing food, volunteering time, participating in local events, or offering knowledge and skills to improve the lives of others. By working together, we can create stronger, more resilient communities that thrive on cooperation and mutual support.
+                    </p>
+                </div>
+
+                <!-- Vision & Mission Section -->
+                <div class="row mt-5">
+                    <div class="col-lg-6">
+                        <h3 class="text-primary">A Vision Rooted in Sustainability and Shared Responsibility</h3>
+                        <p class="lead">
+                            At the heart of the Community Harvest Initiative is a commitment to building a sustainable future. We believe that everyone, regardless of their background, has something valuable to offer, and that the act of sharing—whether it be food, resources, time, or expertise—creates lasting bonds that elevate the entire community. Our vision is to address some of the most pressing issues facing society today—such as hunger, food insecurity, environmental sustainability, and social isolation—by encouraging individuals, families, and local organizations to work together toward common goals.
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="../static/images/food5.jpg" class="img-fluid rounded" alt="Community Harvest Vision">
+                    </div>
+                </div>
+
+                <!-- Programs Section -->
+                <h2 class="text-center mt-5">Our Programs and Activities</h2>
+                <div class="row mt-4">
+                    <!-- Program 1: Food Security & Sharing -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm">
+                            <img src="../static/images/food-donation.jpg" class="card-img-top" alt="Food Security">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary">Food Security & Sharing</h5>
+                                <p class="card-text">
+                                    One of our primary goals is to combat hunger and food waste within our local areas. By connecting people with surplus food and redistributing it to those in need, we help ensure that fewer people go to bed hungry. We encourage the donation of non-perishable goods, fresh produce, and even home-cooked meals, which are then shared with families, shelters, and food banks. Every contribution, big or small, makes a tangible difference in someone's life.
+                                </p><br>
+                                <a href="/information" class="btn btn-outline-warning btn-lg"> More on Food Sharing</a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Program 2: Volunteer Opportunities -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm">
+                            <img src="../static/images/food-training.jpg" class="card-img-top" alt="Volunteers">
+                            <div class="card-body">
+                                <h5 class="card-title text-success">Volunteer Opportunities & Community Support</h5>
+                                <p class="card-text">
+                                    Volunteering is a cornerstone of the Community Harvest Initiative. We provide various opportunities for individuals and groups to give their time and skills to improve the community. Whether you want to assist in organizing events, mentor youth, help with food distribution, or support environmental initiatives, there is always a way for you to get involved. Volunteering creates a sense of belonging and allows individuals to become part of something greater than themselves.
+                                </p><br>
+                                <a href="/information" class="btn btn-outline-success btn-lg">Click for more</a>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Program 3: Local Events & Engagement -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm">
+                            <img src="../static/images/image1.jpg" class="card-img-top" alt="Events">
+                            <div class="card-body">
+                                <h5 class="card-title text-warning">Local Events & Engagement</h5>
+                                <p class="card-text">
+                                    We organize and promote a wide variety of community events aimed at bringing people together. From outdoor activities, workshops, and educational sessions on sustainable practices to fundraising events and community meals, we create engaging opportunities for everyone to participate and connect with others who share similar values. These events are designed to celebrate our shared humanity and foster unity in times of need.
+                                </p><br>
+                                <a href="/information" class="btn btn-outline-warning btn-lg">Events Updates and More</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Volunteer With Us Section -->
+                <section id="volunteers" class="my-5">
+                    <h2 class="text-center">Volunteer with Us</h2>
+                    <p class="lead text-center">
+                        If you're interested in volunteering with us and making a real difference in your community, we would love to have you on board! Whether you have a few hours or a few days to spare, there are numerous ways to contribute.
+                    </p><br>
+                    <div class="text-center">
+                        <a href="/register" class="btn btn-primary btn-lg">JOIN OUR COMMUNITY</a>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+    </div><br><br>
+
+    <!-- Footer -->
+    <footer class="text-center mt-4 py-4" style="background-color: #343a40; color: #fff;">
+        <div class="container">
+            <!-- Copyright Section -->
+            <p>&copy; 2024 Community Harvest Initiative</p>
+
+            <!-- Social Media and Contact Links -->
+            <div class="d-flex justify-content-center">
+                <a href="https://www.facebook.com/CommunityHarvest" target="_blank" class="btn btn-outline-primary btn-sm mx-2">Facebook</a>
+                <a href="https://www.instagram.com/CommunityHarvest" target="_blank" class="btn btn-outline-danger btn-sm mx-2">Instagram</a>
+                <a href="mailto:info@communityharvest.org" class="btn btn-outline-info btn-sm mx-2">Contact Us</a>
+            </div>
+        </div>
+
+        <!-- Quick Links Section -->
+        <div class="container mt-4">
+            <div class="row quick-links">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/about" class="text-white">About Us</a></li>
+                        <li><a href="#registration" class="text-white">Register</a></li>
+                        <li><a href="#events" class="text-white">Upcoming Events</a></li>
+                        <li><a href="#recipes" class="text-white">Share Recipes</a></li>
+                        <li><a href="#volunteers" class="text-white">Volunteer</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Support Us</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/donate" class="text-white">Donate</a></li>
+                        <li><a href="/contact" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5><a href="/training" class="text-white">Training</a></h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/information" class="text-white">Learn More</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Function to open the sidebar
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px"; // Open sidebar
+            document.querySelector('.navbar').classList.add('shifted'); // Shift navbar to the right
+        }
+
+        // Function to close the sidebar
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0"; // Close sidebar
+            document.querySelector('.navbar').classList.remove('shifted'); // Restore navbar position
+        }
+    </script>
+</body>
+</html>

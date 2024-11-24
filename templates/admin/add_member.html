@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Member</title>
+    
+   
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    
+    <style>
+        /* Custom Styles for Sidebar */
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 250px;
+            background-color: #343a40;
+            color: white;
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            color: #ecf0f1;
+            display: block;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .sidebar a:hover {
+            background-color: #495057;
+        }
+
+        
+        .content-wrapper {
+            margin-left: 250px; 
+            margin-top: 80px; 
+            padding-right: 15px;
+        }
+
+        /* Adjusted navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000; 
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #f1f1f1;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Form Styling */
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h1 {
+            margin-bottom: 30px;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .form-container label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-container input, .form-container select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Alert Styling */
+        .alert {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <a class="navbar-brand" href="{{ url_for('dashboard') }}">Community Harvest Admin</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('manage_users') }}"></a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('manage_events') }}"></a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('manage_recipes') }}"></a></li>
+                <li class="nav-item"><a href="{{ url_for('add_admin') }}" class="btn btn-success"></a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('manage_users') }}">Manage Users</a>
+        <a href="{{ url_for('manage_events') }}">Manage Events</a>
+        <a href="{{ url_for('manage_recipes') }}">Manage Recipes</a>
+        <a href="{{ url_for('manage_volunteers') }}">Manage Volunteers</a>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <div class="form-container">
+                <h1>Add New Member</h1>
+        
+                <!-- Display Flash Messages -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <div class="alert alert-{{ messages[0][0] }}" role="alert">
+                            {{ messages[0][1] }}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+
+                <form action="{{ url_for('add_member') }}" method="POST" enctype="multipart/form-data">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name" required>
+            
+                    <label for="position">Position:</label>
+                    <input type="text" name="position" id="position" required>
+            
+                    <label for="email">Email (Optional):</label>
+                    <input type="email" name="email" id="email">
+            
+                    <label for="status">Status:</label>
+                    <select name="status" id="status">
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+            
+                    <label for="image">Profile Image (Optional):</label>
+                    <input type="file" name="image" id="image" accept="image/*">
+            
+                    <button type="submit">Add Member</button>
+                </form>
+            
+                {% if success %}
+                    <p style="color: green;">{{ success }}</p>
+                {% elif error %}
+                    <p style="color: red;">{{ error }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Community Harvest Initiative</p>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Harvest Initiative - Add Event</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        /* Dark background for the whole page */
+        body {
+            background-color: #343a40; 
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000; 
+        }
+
+        .navbar-brand {
+            color: #fff;
+        }
+
+        .navbar-toggler-icon {
+            background-color: #fff;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 250px;
+            background-color: #343a40;
+            color: white;
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            color: #ecf0f1;
+            display: block;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .sidebar a:hover {
+            background-color: #495057;
+        }
+
+        /* Content wrapper for the form */
+        .content-wrapper {
+            margin-left: 250px; 
+            margin-top: 80px; 
+            padding-right: 15px;
+        }
+
+        /* Event Form Section */
+        .section-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: #343a40;
+        }
+
+        /* Styling for the form container */
+        .form-container {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            margin: 0 15px;
+        }
+
+        .form-container h3 {
+            margin-bottom: 20px;
+            color: #495057;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .btn-success {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+        /* Input focus styling */
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 20px;
+            }
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #f1f1f1;
+            padding: 10px;
+            text-align: center;
+            
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            margin: 0;
+            color: #333;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <a class="navbar-brand" href="{{ url_for('dashboard') }}">Community Harvest Admin</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('manage_users') }}"></a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('manage_events') }}"></a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('manage_recipes') }}"></a></li>
+                <li class="nav-item"><a href="{{ url_for('add_admin') }}" class="btn btn-success"></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('manage_users') }}">Manage Users</a>
+        <a href="{{ url_for('manage_events') }}">Manage Events</a>
+        <a href="{{ url_for('manage_recipes') }}">Manage Recipes</a>
+        <a href="{{ url_for('manage_volunteers') }}">Manage Volunteers</a>
+        <a href="{{ url_for('manage_donations') }}">Donation Records</a>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="content-wrapper">
+        <div class="section-form" id="eventForm">
+            <div class="form-container">
+                <h3 class="text-primary">Add Event</h3><br>
+                <form id="eventForm" action="/event" method="post">
+                    <div class="form-group">
+                        <label for="title">Event Title</label>
+                        <input type="text" class="form-control" name="title" placeholder="Event Title" required minlength="5" aria-label="Enter event title">
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Event Date</label>
+                        <input type="date" class="form-control" name="date" required aria-label="Enter event date">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" class="form-control" name="location" placeholder="Location" required aria-label="Enter event location">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" name="description" placeholder="Event Description" required aria-label="Enter event description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="organizer">Organizer Name</label>
+                        <input type="text" class="form-control" name="organizer" placeholder="Organizer Name" required aria-label="Enter organizer name">
+                    </div>
+                    <div class="form-group">
+                        <label for="max_participants">Max Participants</label>
+                        <input type="number" class="form-control" name="max_participants" placeholder="Max Participants" required aria-label="Enter max participants">
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Event Status</label>
+                        <select class="form-control" name="status" required aria-label="Select event status">
+                            <option value="Upcoming">Upcoming</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success">Add Event</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Community Harvest Initiative</p>
+    </footer>
+
+</body>
+</html>

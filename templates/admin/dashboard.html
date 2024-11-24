@@ -1,0 +1,97 @@
+{% extends "admin/layout.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="display-4 text-center mb-5 text-primary">Admin Dashboard</h1>
+
+    <!-- Dashboard Overview -->
+    <div class="row">
+        <!-- Total Users -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-lg border-light">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-success">Total Users</h5>
+                    <p class="card-text display-3 text-secondary font-weight-bold">{{ total_users }}</p>
+                    <hr>
+                    <a href="{{ url_for('manage_users') }}" class="btn btn-outline-success mt-2">Manage Users</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Recipes -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-lg border-light">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-warning">Total Recipes</h5>
+                    <p class="card-text display-3 text-secondary font-weight-bold">{{ total_recipes }}</p>
+                    <hr>
+                    <a href="{{ url_for('manage_recipes') }}" class="btn btn-outline-warning mt-2">Manage Recipes</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Events -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-lg border-light">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-info">Total Events</h5>
+                    <p class="card-text display-3 text-secondary font-weight-bold">{{ total_events }}</p>
+                    <hr>
+                    <a href="{{ url_for('manage_events') }}" class="btn btn-outline-info mt-2">Manage Events</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Total Volunteers -->
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-lg border-light">
+            <div class="card-body text-center">
+                <h5 class="card-title text-info">Total Volunteers</h5>
+                <p class="card-text display-3 text-secondary font-weight-bold">{{ total_volunteers }}</p>
+                <hr>
+                <a href="{{ url_for('manage_volunteers') }}" class="btn btn-outline-info mt-2">Manage Volunteers</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Recent Activities -->
+
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card shadow-lg border-light">
+            <div class="card-body">
+                <h5 class="card-title text-dark">Recent Activities</h5>
+                <ul class="list-group list-group-flush">
+                    {% for activity, timestamp in recent_activities %}
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <strong>{{ activity }}</strong>
+                                <span class="text-muted"><small>{{ timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</small></span>
+                            </div>
+                        </li>
+                    {% else %}
+                        <li class="list-group-item">No recent activities</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Pie Chart -->
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <div class="card shadow-lg border-light">
+                <div class="card-body">
+                    <h5 class="card-title text-dark">Event Participation Distribution</h5>
+                    <div class="text-center">
+                        <img src="data:image/png;base64,{{ pie_chart_data }}" alt="Pie Chart" class="img-fluid" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

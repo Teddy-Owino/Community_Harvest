@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Harvest Initiative</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        /* Sidebar Styling */
+        .sidebar {
+            height: calc(100vh - 80px); 
+            position: fixed;
+            top: 80px; 
+            left: 0;
+            width: 250px;
+            background-color: #343a40;
+            padding-top: 20px;
+            color: white;
+            z-index: 1000; 
+        }
+
+        .content {
+            margin-left: 250px; 
+            padding: 20px;
+            padding-top: 80px; 
+        }
+
+        .navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            padding-bottom: 30px;
+            z-index: 9999;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            background-color: #495057;
+        }
+
+        .section-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            padding: 20px;
+        }
+
+        .section-container .section-text {
+            flex: 1;
+            padding-right: 20px;
+            padding-left: 20px;
+            padding-bottom: 10px;
+        }
+
+        .section-container .section-image {
+            flex: 1;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .section-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .alt-left {
+            flex-direction: row;
+        }
+
+        .alt-right {
+            flex-direction: row-reverse;
+        }
+
+        .btn {
+            margin-top: 15px;
+        }
+
+        .events-list .event-item {
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-item h3 {
+            font-size: 1.5rem;
+            color: #343a40;
+        }
+
+        .event-item p {
+            font-size: 1.1rem;
+            color: #6c757d;
+        }
+
+        .event-item strong {
+            color: #007bff;
+        }
+        /* Initially hide the events section */
+        #events-list {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+        <a class="navbar-brand" href="/">Community Harvest Initiative</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a href="{{ url_for('food') }}">Food Security & Sharing</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url_for('training') }}">Training</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url_for('staffs') }}"> Members</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content">
+
+        <!-- Register Section -->
+        <div class="section-container alt-left" id="registration">
+            <div class="section-text">
+                <h2>Register with Us</h2>
+                <p>Become a part of our community by registering. We aim to connect people for events, recipes, and volunteering opportunities. By joining, you’ll gain access to exclusive updates on community-driven initiatives and projects.</p>
+                <p>Through registration, you’ll also be eligible to participate in our various campaigns and help us make a lasting impact in the community.</p>
+                <a href="{{ url_for('register') }}" class="btn btn-info">Register</a>
+            </div>
+            <div class="section-image">
+                <img src="../static/images/image.jpeg" alt="Register Image">
+            </div>
+        </div>
+
+
+
+        <!-- Events Section -->
+        <div class="section-container alt-right" id="events">
+            <div class="section-text">
+                <h2>Upcoming Events</h2>
+                <p>Join us for various events that aim to bring the community together. From food distribution to workshops, there's always something exciting happening. These events are designed to engage local residents and provide opportunities for socializing, learning, and volunteering.</p>
+                <p>Whether it's a community cleanup or a cooking class, our events are an excellent way to meet like-minded individuals and contribute to your local area. We always have new and exciting programs coming up.</p><br><br>
+                                <!-- Button to Toggle Events Visibility -->
+                <button id="toggle-events-btn" class=" btn btn-primary" onclick="toggleEvents()">Show Upcoming Events</button><br>
+
+            </div>
+            <div class="section-image">
+                <img src="../static/images/image1.jpg" alt="Events Image">
+            </div>
+        </div>
+
+        
+        <h3 class="text-center text-primary">List of Events</h3>
+
+        <!-- Events List (Initially Hidden) -->
+        <div class="events-list" id="events-list">
+            {% if events %}
+                {% for event in events %}
+                    <div class="event-item">
+                        <h3>{{ event.title }}</h3>
+                        <p><strong>Date:</strong> {{ event.date.strftime('%B %d, %Y') }}</p>
+                        <p><strong>Location:</strong> {{ event.location or 'TBA' }}</p>
+                        <p><strong>Organizer:</strong> {{ event.organizer or 'N/A' }}</p>
+                        <p><strong>Max Participants:</strong> {{ event.max_participants or 'Unlimited' }}</p>
+                        <p>{{ event.description or 'No description available.' }}</p>
+                        <br>
+                        <p class="text-black">Contact us if you want to Join Our Events  <a href="{{ url_for('contact') }}" class="btn btn-primary">Reach Us</a></p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No upcoming events at the moment. Please check back later!</p>
+            {% endif %}
+        </div>
+
+        <!-- Volunteer Section -->
+        <div class="section-container alt-left" id="volunteers">
+            <div class="section-text">
+                <h2>Volunteer with Us</h2>
+                <p>Join us in making a meaningful impact in the community by contributing your time and skills. Volunteers are the backbone of our efforts, helping to organize events, support local initiatives, and assist in community programs. Your involvement helps create positive change and brings us closer to our mission of building a stronger, more sustainable community.</p>
+                <button class="btn btn-info" onclick="toggleContent()">See More</button>
+
+                <div id="volunteerDetails" style="display:none;">
+                    <p><strong>Why Volunteer?</strong></p>
+                    <p>Volunteering with us means more than just giving back—it’s about connecting with others, developing new skills, and helping your community thrive.</p>
+                    <p><strong>What We Need:</strong> We need volunteers in various roles, including event planning, food distribution, education, and community outreach. No matter your skillset, we’ll find a way for you to contribute.</p>
+                    <h3>Why Volunteering Matters</h3>
+                    <p>Your contribution as a volunteer enables us to reach more people, organize larger events, and support more community programs. By volunteering, you help create a ripple effect of positive change, from supporting the less fortunate to providing educational resources for others.</p>
+                    <h3>Get Started Today!</h3>
+                    <p>If you’re ready to make a difference, sign up today. You can contribute in a way that fits your schedule and interests. We’ll provide you with all the necessary details about upcoming volunteer opportunities and how you can get involved.</p>
+                    <a href="{{ url_for('volunteer') }}" class="btn btn-primary">Sign up as volunteer</a>
+                </div>
+            </div>
+            <div class="section-image">
+                <img src="../static/images/food2.jpg" alt="Volunteers Image">
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleContent() {
+            var content = document.getElementById('volunteerDetails');
+            var btn = document.querySelector('.btn-info');
+            if (content.style.display === "none") {
+                content.style.display = "block";
+                btn.innerHTML = "See Less";
+            } else {
+                content.style.display = "none";
+                btn.innerHTML = "See More";
+            }
+        }
+
+                // Function to toggle the events section visibility
+        function toggleEvents() {
+            var eventsList = document.getElementById('events-list');
+            var button = document.getElementById('toggle-events-btn');
+
+            
+            if (eventsList.style.display === 'none' || eventsList.style.display === '') {
+                eventsList.style.display = 'block'; 
+                button.textContent = 'Hide Upcoming Events'; 
+            } else {
+                eventsList.style.display = 'none'; 
+                button.textContent = 'Show Upcoming Events'; 
+            }
+        }
+
+    </script>
+
+
+
+</body>
+</html>

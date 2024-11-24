@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Records</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <style>
+        /* Custom Styles for Sidebar */
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 250px;
+            background-color: #343a40;
+            color: white;
+        }
+
+        .sidebar a {
+            color: #ecf0f1;
+            display: block;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .sidebar a:hover {
+            background-color: #495057;
+        }
+
+        .content-wrapper {
+            margin-left: 250px;
+            margin-top: 80px;
+            padding-right: 15px;
+        }
+
+        footer {
+            background-color: #f1f1f1;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Table Styling */
+        table th, table td {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <a class="navbar-brand" href="{{ url_for('dashboard') }}">Community Harvest Admin</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('manage_users') }}"></a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('manage_events') }}"></a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('manage_recipes') }}"></a></li>
+                <li class="nav-item"><a href="{{ url_for('add_admin') }}" class="btn btn-success">Add New Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('manage_users') }}">Manage Users</a>
+        <a href="{{ url_for('manage_events') }}">Manage Events</a>
+        <a href="{{ url_for('manage_recipes') }}">Manage Recipes</a>
+        <a href="{{ url_for('manage_volunteers') }}">Manage Volunteers</a>
+        <a href="{{ url_for('manage_donations') }}">Donation Records</a>
+
+        <br><br><br>
+        <a class="nav-link text-white" href="{{ url_for('logout') }}">Logout</a>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <div class="container mt-5">
+                <h1>Manage Donations</h1>
+
+                <!-- Flash messages -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <div class="alert alert-{{ messages[0][0] }} mt-3">
+                            {{ messages[0][1] }}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+
+                <!-- Donation Records Table -->
+                <table class="table table-bordered mt-4">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Amount</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for donation in donations %}
+                            <tr>
+                                <td>{{ donation[0] }}</td>
+                                <td>{{ donation[1] }}</td>
+                                <td>{{ donation[2] }}</td>
+                                <td>Ksh {{ donation[3] }}</td>
+                                <td>{{ donation[4] }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <!-- Button to Add New Donation -->
+                <a href="{{ url_for('manage_donations') }}" class="btn btn-success mt-3">Add New Donation</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Community Harvest Initiative</p>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
