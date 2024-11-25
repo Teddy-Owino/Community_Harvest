@@ -17,6 +17,7 @@ Flask-Login==0.6.3
 Flask-MySQLdb==2.0.0
 Flask-RESTful==0.3.10
 fonttools==4.54.1
+gunicorn==23.0.0
 idna==3.10
 ipykernel==6.29.5
 ipython==8.28.0

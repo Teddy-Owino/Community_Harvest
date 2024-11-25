@@ -1,6 +1,7 @@
 import pymysql
 from config import Config
 
+
 def get_db_connection():
     return pymysql.connect(
         host=Config.MYSQL_HOST,

@@ -1173,4 +1173,5 @@ def logout():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.getenv('PORT', 5000))  # Get port from environment variable (or 5000 if not set)
+    app.run(debug=True, host='0.0.0.0', port=port) 
