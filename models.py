@@ -1,17 +1,13 @@
 import pymysql
 from config import Config
-
-
+import os
 def get_db_connection():
     return pymysql.connect(
-        host=Config.MYSQL_HOST,
-        user=Config.MYSQL_USER,
-        password=Config.MYSQL_PASSWORD,
-        db=Config.MYSQL_DB,
-        port=Config.MYSQL_PORT,  # Use the port from Config
-        cursorclass=pymysql.cursors.DictCursor
+    host = os.getenv('DB_HOST'),  # Default to 'localhost' if not set
+    user = os.getenv('DB_USER'),  # Default to 'root' if not set
+    password = os.getenv('DB_PASSWORD'),  # Default to empty string if not set
+    db = os.getenv('DB_NAME')  # Default to 'test_db' if not set
     )
-
 
 def create_user(username, email):
     connection = get_db_connection()
