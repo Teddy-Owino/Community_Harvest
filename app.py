@@ -381,9 +381,9 @@ def reply_to_notification(notification_id):
     return redirect(url_for('view_notifications'))
 
 # Database connection function
-def get_db_connection():
-    connection = get_db_connection()
-    return connection
+# def get_db_connection():
+#     connection = get_db_connection()
+#     return connection
 
 # User-related functions
 def create_user(username, first_name, last_name, email, password, phone_number, address):
