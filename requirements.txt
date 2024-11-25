@@ -30,10 +30,10 @@ kiwisolver==1.4.7
 MarkupSafe==2.1.5
 matplotlib==3.9.2
 matplotlib-inline==0.1.7
-mysql-connector==2.2.9  # or mysqlclient==2.2.4 (choose one)
-mysqlclient==2.2.4  # or mysql-connector==2.2.9 (choose one)
+mysql-connector==2.2.9
+mysqlclient==2.2.4
 nest-asyncio==1.6.0
-numpy==1.23.5  # Updated to a stable version
+numpy==2.1.2
 packaging==24.1
 pandas==2.2.3
 parso==0.8.4
@@ -48,7 +48,7 @@ PyMySQL==1.1.1
 pyparsing==3.2.0
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
-pytz==2024.2  # Correct version for compatibility
+pytz==2024.2
 pyzmq==26.2.0
 requests==2.32.3
 seaborn==0.13.2
