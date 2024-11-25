@@ -28,7 +28,6 @@ app.config.from_object(Config)
 app.secret_key = os.getenv('SECRET_KEY', 'default-secret-key-for-local-development')  # Default for local dev
 
 
-
 @app.route('/admin/dashboard')
 def dashboard():
     # Connect to the database
