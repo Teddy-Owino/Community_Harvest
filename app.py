@@ -995,27 +995,33 @@ def training():
 def about():
     return render_template('about.html')  
 
-
 @app.route('/information')
 def information():
-    # Connect to the MySQL database
-    connection = get_db_connection()
+    return render_template('information.html') 
 
-    try:
-        with connection.cursor() as cursor:
-            # Query to fetch events with status 'Upcoming'
-            cursor.execute("SELECT id, title, date, location, description, organizer, max_participants, status FROM events WHERE status = 'Upcoming' ORDER BY date")
-            events = cursor.fetchall()  # Fetch all upcoming events
+    
 
-        # Render the template and pass the events data to it
-        return render_template('information.html', events=events)
+
+# @app.route('/information')
+# def information():
+#     # Connect to the MySQL database
+#     connection = get_db_connection()
+
+#     try:
+#         with connection.cursor() as cursor:
+#             # Query to fetch events with status 'Upcoming'
+#             cursor.execute("SELECT id, title, date, location, description, organizer, max_participants, status FROM events WHERE status = 'Upcoming' ORDER BY date")
+#             events = cursor.fetchall()  # Fetch all upcoming events
+
+#         # Render the template and pass the events data to it
+#         return render_template('information.html', events=events)
     
-    except pymysql.MySQLError as e:
-        print(f"Error: {e}")
-        return "Database connection error", 500
+#     except pymysql.MySQLError as e:
+#         print(f"Error: {e}")
+#         return "Database connection error", 500
     
-    finally:
-        connection.close()  # Always close the connection after use
+#     finally:
+#         connection.close()  # Always close the connection after use
 
 @app.route('/food')
 def food():
