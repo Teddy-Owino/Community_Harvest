@@ -27,24 +27,6 @@ app.config.from_object(Config)
 # Instead of hardcoding, get it from the environment
 app.secret_key = os.getenv('SECRET_KEY', 'default-secret-key-for-local-development')  # Default for local dev
 
-# Database connection settings
-db_config = {
-    "host": "localhost",       # Replace with your MySQL host (localhost or your DB host)
-    "user": "root",   # Replace with your MySQL username
-    "password": "",  # Replace with your MySQL password
-    "database": "community_harvest_db",  # Replace with your database name
-}
-
-# Function to establish database connection
-def get_db_connection():
-    connection = pymysql.connect(
-        host=db_config["host"],
-        user=db_config["user"],
-        password=db_config["password"],
-        database=db_config["database"],
-        cursorclass=pymysql.cursors.DictCursor  # To fetch results as dictionaries
-    )
-    return connection
 
 
 @app.route('/admin/dashboard')
